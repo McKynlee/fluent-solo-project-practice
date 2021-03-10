@@ -32,3 +32,20 @@ CREATE TABLE "users" (
     "auth_level" INT DEFAULT 1
 );
 
+CREATE TABLE "challenge_responses"(
+    "id" SERIAL PRIMARY KEY,
+    "picture_url" VARCHAR (12555) NOT NULL,
+    "picture_description" VARCHAR (12555) NOT NULL,
+    "word" VARCHAR (80) NOT NULL,
+    "word_sentence" VARCHAR (12555) NOT NULL,
+    "user_id" INT REFERENCES "users"
+);
+
+CREATE TABLE "instructor_feedback"
+(
+    "id" SERIAL PRIMARY KEY,
+    "picture_description_feedback" VARCHAR (12555),
+    "word_sentence_feedback" VARCHAR (12555),
+    "suggestion" VARCHAR (12555),
+    "challenge_id" INT REFERENCES "challenge_responses"
+);
